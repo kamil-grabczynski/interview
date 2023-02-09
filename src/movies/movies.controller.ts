@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { CreateMovieModel } from 'models/CreateMovieModel';
 import { CurrentUserAccount } from 'types';
 import { CurrentUser, JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -15,5 +15,11 @@ export class MoviesController {
     @CurrentUser() user: CurrentUserAccount,
   ) {
     return this._moviesService.createMovie(createMovieModel, user);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/')
+  async getMovies(@CurrentUser() user: CurrentUserAccount) {
+    return this._moviesService.getMovies(user);
   }
 }

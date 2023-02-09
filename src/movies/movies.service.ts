@@ -87,4 +87,13 @@ export class MoviesService {
 
     return new MovieDTO(movie);
   }
+
+  async getMovies(user: CurrentUserAccount) {
+    const movies = await this._prismaService.movie.findMany({
+      where: {
+        userId: user.id,
+      },
+    });
+    return movies.map((m) => new MovieDTO(m));
+  }
 }
