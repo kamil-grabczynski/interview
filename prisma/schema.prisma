@@ -24,13 +24,13 @@ model User {
 }
 
 model Movie {
-  id       Int      @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   title    String
-  released DateTime
-  genre    String
-  director String
+  released DateTime?
+  genre    String?
+  director String?
   userId   Int
-  user     User     @relation(fields: [userId], references: [id])
+  user     User      @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -1,0 +1,3 @@
+PORT="3000"
+DATABASE_URL="postgresql://postgres:root@localhost:5432/stepyourworld?schema=public"
+OMDB_API_KEY="797242d9"
