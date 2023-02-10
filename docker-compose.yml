@@ -1,0 +1,41 @@
+version: '3'
+services:
+  api:
+    environment:
+    - 'PORT=3000'
+    - 'DATABASE_URL=postgresql://postgres:postgres@postgres_db:5432/stepyourworld?schema=public'
+    - 'OMDB_API_KEY=797242d9'
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres_db
+    user: '1000:1000'
+    volumes:
+      - .:/app
+      - ./node_modules:/app/node_modules
+      - /app/prisma
+    networks:
+      - app-net
+
+  postgres_db:
+    container_name: api_db
+    image: postgres:14
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "stepyourworld"
+    expose:
+      - '5432'
+    volumes:
+      - './postgres:/var/lib/postgresql/data'
+    networks:
+      - app-net
+  
+networks:
+  app-net:
+    name: app-net
+    driver: bridge
