@@ -1,14 +1,18 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { HttpModule } from '@nestjs/axios';
+import { Test } from '@nestjs/testing';
+import { PrismaService } from '../prisma/prisma.service';
 import { MoviesController } from './movies.controller';
+import { MoviesService } from './movies.service';
 
 describe('MoviesController', () => {
   let controller: MoviesController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       controllers: [MoviesController],
+      providers: [MoviesService, PrismaService],
+      imports: [HttpModule],
     }).compile();
-
     controller = module.get<MoviesController>(MoviesController);
   });
 

@@ -1,4 +1,6 @@
+import { HttpModule } from '@nestjs/axios';
 import { Test, TestingModule } from '@nestjs/testing';
+import { PrismaService } from '../prisma/prisma.service';
 import { MoviesService } from './movies.service';
 
 describe('MoviesService', () => {
@@ -6,7 +8,8 @@ describe('MoviesService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [MoviesService],
+      providers: [MoviesService, PrismaService],
+      imports: [HttpModule],
     }).compile();
 
     service = module.get<MoviesService>(MoviesService);

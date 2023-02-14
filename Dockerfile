@@ -5,6 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 
 RUN npm install
+RUN npm install @node-rs/xxhash-linux-x64-musl -f
 COPY . .
 
 ARG DATABASE_URL=""

@@ -4,16 +4,17 @@ import {
   BadRequestException,
   NotFoundException,
 } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { CurrentUserAccount, MovieFromApi, Role } from '../../types';
-import { CreateMovieModel } from '../../models/CreateMovieModel';
+import { PrismaService } from '../prisma/prisma.service';
+import { CurrentUserAccount, MovieFromApi, Role } from '../../../types';
+import { CreateMovieModel } from '../../../models/CreateMovieModel';
 import * as moment from 'moment';
 import { HttpService } from '@nestjs/axios';
-import { constants } from '../config/constants';
-import { MovieDTO } from '../DTO/Movie.dto';
+import { constants } from '../../config/constants';
+import { MovieDTO } from '../../DTO/Movie.dto';
 
 @Injectable()
 export class MoviesService {
+  // httpService: any;
   constructor(
     @Inject(PrismaService) private readonly _prismaService: PrismaService,
     private readonly httpService: HttpService,
