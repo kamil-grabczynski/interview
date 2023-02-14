@@ -10,7 +10,7 @@ import { CreateMovieModel } from '../../models/CreateMovieModel';
 import * as moment from 'moment';
 import { HttpService } from '@nestjs/axios';
 import { constants } from '../config/constants';
-import { MovieDTO } from '../DTO/MovieDTO';
+import { MovieDTO } from '../DTO/Movie.dto';
 
 @Injectable()
 export class MoviesService {

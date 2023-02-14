@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { CreateMovieModel } from 'models/CreateMovieModel';
+import { CreateMovieModel } from '../../models/CreateMovieModel';
 import { CurrentUserAccount } from 'types';
 import { CurrentUser, JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { MoviesService } from './movies.service';
