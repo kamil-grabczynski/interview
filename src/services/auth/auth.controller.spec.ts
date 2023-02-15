@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 
 describe('AuthController', () => {
   let controller: AuthController;
-
+  let service: AuthService;
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AuthController],
@@ -14,9 +14,16 @@ describe('AuthController', () => {
     }).compile();
 
     controller = module.get<AuthController>(AuthController);
+    service = module.get<AuthService>(AuthService);
   });
 
-  it('should be defined', () => {
+  it('[Auht] Controller should be defined', () => {
     expect(controller).toBeDefined();
+    expect(controller.login).toBeDefined();
+  });
+  it('[Auth] Service should be defined', () => {
+    expect(service).toBeDefined();
+    expect(service.login).toBeDefined();
+    expect(service.validateUser).toBeDefined();
   });
 });
