@@ -3,8 +3,8 @@
 - [x] GET /movies
 - [x] Authorization service
 - [x] Docker & docker-compose
-- [ ] Test code
-- [ ] Documentation api
+- [x] Test code
+- [x] Documentation api
 
 ## Installation
 
